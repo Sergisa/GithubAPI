@@ -2,6 +2,10 @@ package com.sergisa;
 
 import com.google.gson.annotations.SerializedName;
 
+import javax.swing.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class Repo {
     @SerializedName("name")
     public String name;
@@ -32,7 +36,7 @@ public class Repo {
         public int id;
         @SerializedName("login")
         public String name;
-
-
+        @SerializedName("avatar_url")
+        public String avatarURL;
     }
 }

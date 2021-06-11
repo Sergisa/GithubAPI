@@ -7,13 +7,21 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import javax.swing.*;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import java.io.IOException;
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-	    ReposList reposListForm = new ReposList();
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                UIManager.setLookAndFeel(new NimbusLookAndFeel());
+            }
+        } catch (Exception e) {}
+
+        ReposList reposListForm = new ReposList();
         // write your code here
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit retrofit = new Retrofit.Builder()
@@ -35,7 +43,7 @@ public class Main {
 
             @Override
             public void onFailure(Call<List<Repo>> call, Throwable t) {
-
+                System.out.println(t.toString());
             }
         });
     }
